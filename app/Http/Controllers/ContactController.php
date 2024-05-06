@@ -14,18 +14,18 @@ class ContactController extends Controller
         $contact = Kontak::paginate(10);
 
 
-        return view('page.contact.index', compact('contact'));
+        return view('contact.index', compact('contact'));
     }
 
     public function show(string $id)
     {
         $contact = Kontak::findOrFail($id);
-        return view('page.contact.show', compact('contact'));
+        return view('contact.view', compact('contact'));
     }
 
     public function edit(Kontak $contact)
     {
-        return view('page.contact.edit', compact('contact'));
+        return view('contact.update', compact('contact'));
     }
 
     public function update(Request $request, Kontak $contact)

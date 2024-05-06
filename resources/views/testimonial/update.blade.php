@@ -68,7 +68,7 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
                                 <input type="text" value="{{ $testimonial->name }}" class="form-control" id="name"
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <fieldset class="rating">
                                     <input type="radio" id="star5" name="rate" value="5" /><label class="full"
@@ -102,11 +102,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <input type="text" class="form-control" id="description" name="description"
-                                    value="{{ $testimonial->description }}" required>
+                                <textarea type="text" style="height:200px" class="form-control" id="description" name="description" value=""
+                                    required>{{ $testimonial->description }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
 
 @section('jquery')
 <script>
-     var ratingFromDB = <?php echo $testimonial->rate; ?>;
+    var ratingFromDB = <?php echo $testimonial->rate; ?>;
 document.getElementById('star' + ratingFromDB).checked = true;
 
     const fileInput = document.getElementById('file_input');

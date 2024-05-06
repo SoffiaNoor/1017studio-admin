@@ -14,12 +14,12 @@ class FAQController extends Controller
         $faq = faq::paginate(10);
 
 
-        return view('page.content-faq.index', compact('faq'));
+        return view('faq.index', compact('faq'));
     }
 
     public function create()
     {
-        return view('page.content-faq.create');
+        return view('faq.create');
     }
 
     public function store(Request $request)
@@ -41,12 +41,12 @@ class FAQController extends Controller
         $faq = faq::findOrFail($id);
 
         //render view with post
-        return view('page.content-faq.show', compact('faq'));
+        return view('faq.view', compact('faq'));
     }
 
     public function edit(faq $faq)
     {
-        return view('page.content-faq.edit', compact('faq'));
+        return view('faq.update', compact('faq'));
     }
 
     public function update(Request $request, faq $faq)

@@ -10,6 +10,10 @@ class TagBerita extends Model
     use HasFactory;
     protected $table = 'berita_tag';
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function tagBerita()
     {
         return $this->hasMany(Berita::class);

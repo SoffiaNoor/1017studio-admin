@@ -93,7 +93,7 @@
     </div>
     <div class="min-height-300 position-absolute w-100"></div>
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
-        style="background-color:#ffe200!important" id="sidenav-main">
+        style="background-color:#ffe200!important;z-index:9999!important;" id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
@@ -140,6 +140,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link mx-3 my-1 {{ preg_match('/tag_news/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/tag_news"
+                        style="color:black; {{ preg_match('/tag_news/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="nav-link-text ms-1 font-weight-bold">Content Tag News</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link mx-3 my-1 {{ preg_match('/news/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/news"
                         style="color:black; {{ preg_match('/news/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
@@ -148,9 +156,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 {{ preg_match('/tempat/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/tempat"
-                        style="color:black; {{ preg_match('/tempat/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 {{ preg_match('/faq/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/faq"
+                        style="color:black; {{ preg_match('/faq/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
                         <i class="fas fa-map" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Content FAQ</span>
                     </a>
@@ -158,9 +166,9 @@
                 <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-9" style="color:#1c1c1c">Customer
                 </h6>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 {{ preg_match('/histori_mk/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/histori_mk"
-                        style="color:black; {{ preg_match('/histori_mk/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 {{ preg_match('/contact/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/contact"
+                        style="color:black; {{ preg_match('/contact/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
                         <i class="fa fa-save" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">List Contact</span>
                     </a>

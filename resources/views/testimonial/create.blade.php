@@ -65,7 +65,7 @@
                 <form class="p-3" method="POST" action="{{ route('testimonial.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -78,36 +78,37 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black;float:left">Rating</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                    <fieldset class="rating">
-                                        <input type="radio" id="star5" name="rate" value="5" /><label class="full"
-                                            for="star5" title="Awesome - 5 stars"></label>
-                                        <input type="radio" id="star4" name="rate" value="4" /><label class="full"
-                                            for="star4" title="Pretty good - 4 stars"></label>
-                                        <input type="radio" id="star3" name="rate" value="3" /><label class="full"
-                                            for="star3" title="Meh - 3 stars"></label>
-                                        <input type="radio" id="star2" name="rate" value="2" /><label class="full"
-                                            for="star2" title="Kinda bad - 2 stars"></label>
-                                        <input type="radio" id="star1" name="rate" value="1" /><label class="full"
-                                            for="star1" title="Sucks big time - 1 star"></label>
-                                    </fieldset>
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rate" value="5" /><label class="full"
+                                        for="star5" title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4" name="rate" value="4" /><label class="full"
+                                        for="star4" title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3" name="rate" value="3" /><label class="full"
+                                        for="star3" title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2" name="rate" value="2" /><label class="full"
+                                        for="star2" title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1" name="rate" value="1" /><label class="full"
+                                        for="star1" title="Sucks big time - 1 star"></label>
+                                </fieldset>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" required>
-                                @error('name')
+                                <textarea type="text" style="height:200px" class="form-control" id="description" name="description"
+                                    required></textarea>
+                                @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

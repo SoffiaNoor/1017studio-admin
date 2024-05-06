@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <p class="ms-1 leading-normal text-sm text-justify"
-                                    style="color:#1c1c1c;text-indent:2rem">{{$information->description}}</p>
+                                    style="color:#1c1c1c;text-indent:2rem">{!! $information->description !!}</p>
                             </div>
                         </div>
                     </div>

@@ -21,18 +21,18 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                          <h4 class="card-title title">Website Information</h4>
-                          <div class="row mr-1">
-                            <div class="d-flex justify-content-between align-items-center">
-                              <a href="/information" class="btn btn-info text-white"><i
-                                  class="bi bi-arrow-return-left mx-1"></i>Back</a>
-                              <button class="btn btn-success mx-2" type="submit">
-                                <i class="bi bi-pencil mx-1"></i>Save Changes
-                              </button>
+                            <h4 class="card-title title">Website Information</h4>
+                            <div class="row mr-1">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="/information" class="btn btn-info text-white"><i
+                                            class="bi bi-arrow-return-left mx-1"></i>Back</a>
+                                    <button class="btn btn-success mx-2" type="submit">
+                                        <i class="bi bi-pencil mx-1"></i>Save Changes
+                                    </button>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
@@ -179,9 +179,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea rows="10" name="description" id="description" cols="80"
-                                        class="form-control"
-                                        placeholder="Company Description">{{$information->description}}</textarea>
+                                    <textarea rows="10" cols="80"
+                                        class="form-control @error('description') is-invalid @enderror" id="description"
+                                        name="description" placeholder="Here can be your description"
+                                        required>{{$information->description}}</textarea>
+                                    @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -216,8 +222,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Link Instagram</label>
-                                    <input type="url" name="instagram" class="form-control"
-                                        placeholder="Your instagram" value="{{$information->instagram}}">
+                                    <input type="url" name="instagram" class="form-control" placeholder="Your instagram"
+                                        value="{{$information->instagram}}">
                                 </div>
                             </div>
                         </div>
@@ -225,8 +231,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Link Twitter</label>
-                                    <input type="url" name="twitter" class="form-control"
-                                        placeholder="Your twitter" value="{{$information->twitter}}">
+                                    <input type="url" name="twitter" class="form-control" placeholder="Your twitter"
+                                        value="{{$information->twitter}}">
                                 </div>
                             </div>
                         </div>
@@ -234,8 +240,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Link Facebook</label>
-                                    <input type="url" name="facebook" class="form-control"
-                                        placeholder="Your facebook" value="{{$information->facebook}}">
+                                    <input type="url" name="facebook" class="form-control" placeholder="Your facebook"
+                                        value="{{$information->facebook}}">
                                 </div>
                             </div>
                         </div>
@@ -275,6 +281,8 @@
 @endsection
 @section('jquery')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/a2m8qq7i48j1gc5izphurmemg39o165ft6pbpiz5a7waq805/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
 
 <script>
     const fileInput = document.getElementById('file_input');
@@ -327,6 +335,16 @@
             };
             reader4.readAsDataURL(fileInput4.files[0]);
         }
+    });
+</script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea#description',
+        plugins: 'lists textcolor',
+        toolbar: 'undo redo | bold italic | bullist numlist | forecolor backcolor',
+        height: 300, // You can adjust the height as needed
+        menubar: false // Optionally, you can hide the menubar
     });
 </script>
 @endsection

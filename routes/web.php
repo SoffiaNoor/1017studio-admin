@@ -14,6 +14,7 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\TagNewsController;
 
 View::composer('layouts.master', function ($view) {
     $loggedInUser = Auth::user();
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/news', NewsController::class);
     Route::resource('/faq', FAQController::class);
     Route::resource('/contact', ContactController::class);
+    Route::resource('/tag_news', TagNewsController::class);
 });
 
 Route::get('/404', function () {
