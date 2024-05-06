@@ -80,7 +80,7 @@
 
 <body style="background-color:#000000">
     <div class="loader-container">
-        <img src="http://localhost:8000/assets/img/logo.png" class="swing-animation" alt="Loading..." />
+        <img src="{{asset('assets/img/logo.png')}}" class="swing-animation" alt="Loading..." />
     </div>
     <main class="main-content  mt-0">
         <section>

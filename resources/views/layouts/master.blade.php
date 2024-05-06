@@ -140,17 +140,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 {{ preg_match('/tag_news/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 {{ Route::current()->uri == 'tag_news' ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/tag_news"
-                        style="color:black; {{ preg_match('/tag_news/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
+                        style="color:black; {{ Route::current()->uri == 'tag_news' ? 'background: linear-gradient(45deg, #525151, #1c1c1c); background-size: cover;' : '' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Content Tag News</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 {{ preg_match('/news/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                    <a class="nav-link mx-3 my-1 {{ Route::current()->uri == 'news' ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/news"
-                        style="color:black; {{ preg_match('/news/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #525151, #1c1c1c);background-size: cover;' : '' }}">
+                        style="color:black; {{ Route::current()->uri == 'news' ? 'background: linear-gradient(45deg, #525151, #1c1c1c); background-size: cover;' : '' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Content News</span>
                     </a>
