@@ -23,16 +23,25 @@
                     {{ session('error') }}
                 </div>
                 @endif
-                <form class="p-3" method="POST" action="{{ route('portfolio.store')}}" enctype="multipart/form-data">
+                <form class="p-3" method="POST" action="{{ route('news.store')}}" enctype="multipart/form-data">
                     @csrf
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">News Category</label>
                                 <br>
                                 <select class="selectpicker" multiple data-live-search="true"
-                                    style="width:100%!important" name="berita_tag">
-                                    @foreach ($tagBerita as $tb)
+                                    style="width:100%!important" name="berita_tag[]" required>
+                                    @foreach ($tagNews as $tb)
                                     <option value="{{$tb->id}}">{{$tb->name}}</option>
                                     @endforeach
                                 </select>
@@ -58,7 +67,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label style="color:black">Image</label>
+                                <label style="color:black">Photo</label>
                                 <div class="grid grid-cols-6">
                                     <img id="image_display" class="object-cover"
                                         style="width:10rem;height:10rem;object-fit:cover"
@@ -84,10 +93,10 @@
                     <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">
-                                <a href="/portfolio" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
+                                <a href="/news" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"
                                         aria-hidden="true"></i>
                                 </a>
-                                <a href="/portfolio" class="btn-inner--text text-white ms-2">Kembali</a>
+                                <a href="/news" class="btn-inner--text text-white ms-2">Kembali</a>
                             </button>
                             <button class="btn btn-icon btn-3 btn-success"
                                 style="background: linear-gradient(45deg, #525151, #1c1c1c)" type="submit">

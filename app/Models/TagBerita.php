@@ -14,4 +14,9 @@ class TagBerita extends Model
     {
         return $this->hasMany(Berita::class);
     }
+
+    public function beritas()
+    {
+        return $this->belongsToMany(Berita::class, 'berita_tag', 'berita_tag', 'id');
+    }
 }

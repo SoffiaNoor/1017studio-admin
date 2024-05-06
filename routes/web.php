@@ -13,6 +13,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BeritaController;
 
 View::composer('layouts.master', function ($view) {
     $loggedInUser = Auth::user();

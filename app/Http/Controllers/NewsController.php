@@ -3,107 +3,139 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Berita;
+use App\Models\News;
 use App\Models\TagBerita;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 class NewsController extends Controller
 {
     public function index()
     {
-        $berita = Berita::all();
-        $berita = Berita::paginate(3);
+        $news = News::all();
+        $news = News::paginate(3);
 
 
-        return view('news.index', compact('berita'));
+        return view('news.index', compact('news'));
     }
 
     public function create()
     {
-        $tagBerita = TagBerita::all();
-        return view('news.create', compact('tagBerita'));
+        $tagNews = TagBerita::all();
+        return view('news.create', compact('tagNews'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'name' => 'required|min:5',
+            'photo' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'title' => 'required|min:5',
             'description' => 'required|string',
             'author' => 'required|string',
-            'berita_tag' => 'required',
+            'berita_tag' => 'required|array',
         ]);
-
-        var_dump($input = $request->all());
 
         $input = $request->all();
 
-        // Process the selected options from the multiselect dropdown
-        $beritaTags = implode(',', $request->berita_tag);
-
-
-        if ($image = $request->file('image')) {
+        if ($image = $request->file('photo')) { // Change 'image' to 'photo'
             $destinationPath = 'images/news/';
             $profileImage = "news" . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['image'] = $profileImage;
+            $input['photo'] = $destinationPath . $profileImage; // Change 'image' to 'photo'
         }
 
-        // Assign the concatenated IDs to the input array
-        $input['berita_tag'] = $beritaTags;
+        // Convert the array to a comma-separated string
+        $newsTagString = implode(',', $input['berita_tag']);
+        $input['berita_tag'] = $newsTagString;
 
-        Berita::create($input);
+        News::create($input);
 
         return redirect()->route('news.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
 
+
+
     public function show(string $id)
     {
-        $berita = Berita::findOrFail($id);
-        $tagBerita = TagBerita::find($berita->berita_tag_id);
+        $news = News::findOrFail($id);
+        $tagNews = TagBerita::all();
 
         //render view with post
-        return view('news.show', compact('berita', 'tagBerita'));
+        return view('news.view', compact('news', 'tagNews'));
     }
 
-    public function edit(Berita $berita)
+    public function edit($id)
     {
-        $tagBerita = TagBerita::all();
-        $tagJenis = TagBerita::find($berita->berita_tag_id);
-        return view('news.edit', compact('berita', 'tagBerita', 'tagJenis'));
+        $news = News::findOrFail($id); // Fetch the news item by ID
+        $tagNews = TagBerita::all(); // Assuming you have a model for TagBerita
+
+        return view('news.update', compact('news', 'tagNews')); // Pass the news item and tag options to the view
     }
 
-    public function update(Request $request, Berita $berita)
+
+    public function update(Request $request, News $news)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'name' => 'required|min:5',
-            'berita_tag_id' => 'required|int',
+            'title' => 'required|max:255',
+            'photo' => ($request->hasFile('photo') || !$news->photo) ? 'image|mimes:jpeg,jpg,png|max:2048' : '',
             'description' => 'required|string',
             'author' => 'required|string',
+            'berita_tag' => 'required|array',
+        ], [
+            'title.required' => 'Title is required.',
+            'title.max' => 'Title should not exceed 255 characters.',
+            'photo.required' => 'Image is required.',
+            'description.required' => 'Detail is required.',
+            'description.max' => 'Detail should not exceed 255 characters.',
+            'author.required' => 'Author is required.',
+            'author.max' => 'Author should not exceed 255 characters.',
+            'berita_tag.required' => 'News tag is required.',
         ]);
 
-        $input = $request->all();
+        $input = $request->except(['_token', '_method']);
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/news/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        } else {
-            unset($input['image']);
+        if (!empty($news->photo) && $request->hasFile('photo')) {
+            $imagePath = $news->photo;
+
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
         }
 
-        $berita->update($input);
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $destinationPath = 'images/news/';
+            $profileImage = "news" . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['photo'] = $destinationPath . $profileImage;
+        }
 
-        return redirect()->route('news.index')
-            ->with('success', 'News updated successfully');
+        $newsTagString = implode(',', $input['berita_tag']);
+        $input['berita_tag'] = $newsTagString;
+
+        $updated = $news->update($input);
+
+        if ($updated) {
+            return redirect()->route('news.index')->with(['success' => 'Data Berhasil Diperbarui!']);
+        } else {
+            return redirect()->back()->with(['error' => 'Gagal memperbarui data.']);
+        }
     }
 
-    public function destroy(Berita $berita)
+
+
+    public function destroy(News $news)
     {
-        $berita->delete();
+        if (!empty($news->photo)) {
+            $imagePath = $news->photo;
+
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        $news->delete();
 
         return redirect()->route('news.index')
             ->with('success', 'News deleted successfully');
