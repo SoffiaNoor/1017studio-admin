@@ -68,8 +68,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <textarea type="text" class="form-control" style="height:300px" id="description"
-                                    name="description" disabled>{{ $news->description }}</textarea>
+                                <div class="p-3" style="background-color: #e9ecef;border-radius: 20px;border: solid;
+                                border-width: 1px;
+                                border-color: #ced4da;">
+                                    <p class="ms-1 leading-normal text-sm text-justify"
+                                        style="color:#1c1c1c;text-indent:2rem">{!! $news->description !!}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

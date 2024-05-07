@@ -65,19 +65,15 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-default text-xs font-weight-bolder">
-                                    <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
-                                            {!! substr($p->description,0,30).'...' !!}
-                                        </span>
-                                    </div>
-                                </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         @if($p->photo)
-                                            <img class="object-contain items-center" style="width:8rem;height:8rem;object-fit:cover" src="{{ $p->photo }}">
+                                        <img class="object-contain items-center"
+                                            style="width:8rem;height:8rem;object-fit:cover" src="{{ $p->photo }}">
                                         @else
-                                            <img class="object-contain items-center" style="width:8rem;height:8rem;object-fit:cover" src="{{ asset('assets/img/no-photo.png') }}">
+                                        <img class="object-contain items-center"
+                                            style="width:8rem;height:8rem;object-fit:cover"
+                                            src="{{ asset('assets/img/no-photo.png') }}">
                                         @endif
                                     </div>
                                 </td>
@@ -114,8 +110,8 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Tidak</button>
-                                                    <form action="{{ route('news.destroy', $p->id) }}"
-                                                        method="POST" style="display: inline;">
+                                                    <form action="{{ route('news.destroy', $p->id) }}" method="POST"
+                                                        style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Hapus</button>
@@ -175,7 +171,8 @@
                     </nav>
                 </div>
                 @else
-                <div class="alert alert-info shadow border-radius-xl font-weight-bolder" style="background: linear-gradient(45deg, #ffe200, #d4bd0b);color:#1c1c1c">
+                <div class="alert alert-info shadow border-radius-xl font-weight-bolder"
+                    style="background: linear-gradient(45deg, #ffe200, #d4bd0b);color:#1c1c1c">
                     Tabel masih kosong.
                 </div>
                 @endif

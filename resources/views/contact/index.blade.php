@@ -103,39 +103,6 @@
                                         class="text-gray-400 hover:text-amber-400 mx-2" style="color:black">
                                         <i class="fas fa-edit text-sm"></i>
                                     </a>
-                                    <a href="#" class="text-gray-400 hover:text-amber-400" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal{{$p->id}}" style="color:black">
-                                        <i class="fa fa-trash text-sm"></i>
-                                    </a>
-
-                                    <div class="modal fade" id="deleteModal{{$p->id}}" tabindex="-1" role="dialog"
-                                        aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title font-weight-bolder" id="deleteModalLabel">
-                                                        Delete Confirmation
-                                                    </h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body text-sm">
-                                                    Apakah anda yakin menghapus <span
-                                                        class="font-weight-bolder">{{$p->name}}</span>?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Tidak</button>
-                                                    <form action="{{ route('contact.destroy', $p->id) }}" method="POST"
-                                                        style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Hapus</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach

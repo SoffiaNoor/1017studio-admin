@@ -90,9 +90,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label style="color:black">Description</label>
-                                <textarea type="text" style="height:300px" class="form-control @error('description') is-invalid @enderror"
-                                    id="description" name="description" required>{{ $news->description }}</textarea>
+                                <label>Description</label>
+                                <textarea rows="10" cols="80"
+                                    class="form-control @error('description') is-invalid @enderror" id="description"
+                                    name="description" placeholder="Here can be your description"
+                                    required>{{$news->description}}</textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -123,6 +125,8 @@
 @endsection
 
 @section('jquery')
+<script src="https://cdn.tiny.cloud/1/a2m8qq7i48j1gc5izphurmemg39o165ft6pbpiz5a7waq805/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
 <script>
     const fileInput = document.getElementById('file_input');
     const imageDisplay = document.getElementById('image_display');
@@ -135,6 +139,15 @@
             };
             reader.readAsDataURL(fileInput.files[0]);
         }
+    });
+</script>
+<script>
+    tinymce.init({
+        selector: 'textarea#description',
+        plugins: 'lists textcolor',
+        toolbar: 'undo redo | bold italic | bullist numlist | forecolor backcolor',
+        height: 300, // You can adjust the height as needed
+        menubar: false // Optionally, you can hide the menubar
     });
 </script>
 @endsection
