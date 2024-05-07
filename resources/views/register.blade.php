@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <title>
-        RUNGKAD
+        1017 Studios
     </title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -31,7 +31,7 @@
                                 <div class="row">
                                     <div class="col-sm-2" style="align-self: center;">
                                         <div><a class="btn btn-secondary m-0" href="/" style="border-radius:100%;padding-top:1rem;padding-bottom:1rem;background: linear-gradient(45deg, #ffe200, #d4bd0b)">
-                                                <i class="fa fa-arrow-left m-0 p-0"></i>
+                                                <i class="fa fa-arrow-left m-0 p-0" style="color:#000000"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0"
-                                                style="background: linear-gradient(45deg, #ffe200, #d4bd0b);background-size: cover;">Register</button>
+                                                style="background: linear-gradient(45deg, #ffe200, #d4bd0b);background-size: cover;color:#000000">Register</button>
                                         </div>
                                     </form>
 

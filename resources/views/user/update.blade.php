@@ -160,7 +160,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background: linear-gradient(45deg, #525151, #1c1c1c);">
                                     {{ __('Change Password') }}
                                 </button>
                             </div>

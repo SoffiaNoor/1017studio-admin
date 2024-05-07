@@ -87,8 +87,8 @@
                                 @if(Auth::id() == $u->id)
                                 <td class="text-right">
                                     <a href="{{ route('user.show', $u->id) }}"><i
-                                            class="fa fa-eye text-sm"></i></a>
-                                    <a href="{{ route('user.edit', $u->id) }}"><i class="fas fa-edit text-sm mx-3"></i></a>
+                                            class="fa fa-eye text-sm" style="color:#1c1c1c"></i></a>
+                                    <a href="{{ route('user.edit', $u->id) }}"><i class="fas fa-edit text-sm mx-3" style="color:#1c1c1c"></i></a>
                                 </td>
                                 @else
                                 <td>
