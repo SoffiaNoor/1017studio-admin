@@ -16,6 +16,7 @@ class Portfolio extends Model
         'jenis_tag_id',
         'image',
         'description',
+        'url',
     ];
 
 }

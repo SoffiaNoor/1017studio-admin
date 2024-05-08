@@ -72,6 +72,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black">Url Link (For website design)</label>
+                                <input type="url" class="form-control" id="url" name="url">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">
                                 <a href="/portfolio" class="btn-inner--icon text-white"><i class="fa fa-arrow-left"

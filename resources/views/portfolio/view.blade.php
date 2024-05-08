@@ -52,6 +52,17 @@
                             </div>
                         </div>
                     </div>
+                    @if($portofolio->jenis_tag_id == 2)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black">Url (For Website Only)</label>
+                                <input type="text" class="form-control" id="description" name="description"
+                                    value="{{ $portofolio->url }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">

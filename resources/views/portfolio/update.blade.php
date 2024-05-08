@@ -16,7 +16,8 @@
                     {{ session('error') }}
                 </div>
                 @endif
-                <form class="p-3" method="POST" action="{{ route('portfolio.update',$portfolio->id)}}" enctype="multipart/form-data">
+                <form class="p-3" method="POST" action="{{ route('portfolio.update',$portfolio->id)}}"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -68,8 +69,7 @@
                                     </div>
                                     @endif
                                 </div>
-                                <input type="file" class="form-control mt-3" id="file_input" name="image"
-                                    value="">
+                                <input type="file" class="form-control mt-3" id="file_input" name="image" value="">
                                 <small class="text-muted">Please choose an image to upload.</small>
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -88,6 +88,16 @@
                             </div>
                         </div>
                     </div>
+                    @if($portfolio->jenis_tag_id == 2)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black">Url Link (For website design)</label>
+                                <input type="url" class="form-control" id="url" name="url" value="{{$portfolio->url}}">
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                     <div class="row">
                         <div class="col-sm-6 pt-2">
                             <button class="btn btn-icon btn-3 btn-secondary" type="button">
