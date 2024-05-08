@@ -22,7 +22,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -54,7 +59,7 @@
                                         style="width:10rem;height:10rem;object-fit:cover"
                                         src="{{asset('assets/img/no-photo.png')}}" alt="image description">
                                 </div>
-                                <input type="file" name="image" id="file_input" class="form-control mt-2" />
+                                <input type="file" name="image" id="file_input" class="form-control mt-2 @error('image') is-invalid @enderror" />
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -67,7 +72,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" required>
+                                <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" required>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -75,7 +85,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black">Url Link (For website design)</label>
-                                <input type="url" class="form-control" id="url" name="url">
+                                <input type="url" class="form-control @error('url') is-invalid @enderror" id="url" name="url">
+                                @error('url')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -87,7 +102,8 @@
                                 </a>
                                 <a href="/portfolio" class="btn-inner--text text-white ms-2">Kembali</a>
                             </button>
-                            <button class="btn btn-icon btn-3 btn-success" style="background: linear-gradient(45deg, #525151, #1c1c1c)" type="submit">
+                            <button class="btn btn-icon btn-3 btn-success"
+                                style="background: linear-gradient(45deg, #525151, #1c1c1c)" type="submit">
                                 <a class="btn-inner--icon text-white"><i class="fa fa-save" aria-hidden="true"></i>
                                 </a>
                                 <a class="btn-inner--text text-white ms-2">Simpan</a>

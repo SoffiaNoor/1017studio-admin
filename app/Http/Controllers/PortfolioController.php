@@ -15,7 +15,7 @@ class PortfolioController extends Controller
     public function index()
     {
         $portofolio = Portfolio::all();
-        $portofolio = Portfolio::paginate(3);
+        $portofolio = Portfolio::paginate(6);
 
         return view('portfolio.index', compact('portofolio'));
     }
@@ -34,6 +34,12 @@ class PortfolioController extends Controller
             'name' => 'required|min:5',
             'jenis_tag_id' => 'required|int',
             'description' => 'required|string',
+        ], [
+            'name.required' => 'Name is required.',
+            'name.max' => 'Name should not exceed 255 characters.',
+            'image.required' => 'Image is required.',
+            'jenis_tag_id.required' => 'Jenis tag is required.',
+            'description.required' => 'Description is required.',
         ]);
 
         $input = $request->all();
