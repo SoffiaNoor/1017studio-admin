@@ -52,7 +52,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" required>
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required>
+                                @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -60,7 +65,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Author</label>
-                                <input type="text" class="form-control" id="author" name="author" required>
+                                <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" required>
+                                @error('author')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>

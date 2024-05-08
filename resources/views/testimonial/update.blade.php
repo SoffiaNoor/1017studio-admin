@@ -71,8 +71,14 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
-                                <input type="text" value="{{ $testimonial->name }}" class="form-control" id="name"
-                                    name="name" required>
+                                <input type="text" value="{{ $testimonial->name }}"
+                                    class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                                    required>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -105,8 +111,14 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <textarea type="text" style="height:200px" class="form-control" id="description" name="description" value=""
-                                    required>{{ $testimonial->description }}</textarea>
+                                <textarea type="text" style="height:200px"
+                                    class="form-control @error('description') is-invalid @enderror" id="description"
+                                    name="description" value="" required>{{ $testimonial->description }}</textarea>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>

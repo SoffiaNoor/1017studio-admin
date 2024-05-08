@@ -24,8 +24,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
-                                <input type="text" value="{{ $portfolio->name }}" class="form-control" id="name"
-                                    name="name" required>
+                                <input type="text" value="{{ $portfolio->name }}"
+                                    class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                                    required>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -34,7 +40,7 @@
                             <div class="form-group">
                                 <label style="color:black">Portfolio Type</label>
                                 <select id="countries" name="jenis_tag_id" required
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5">
+                                    class="form-control @error('jenis_tag_id') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5">
                                     <option selected value="{{$tagJenis->id}}">{{$tagJenis->jenis}}</option>
                                     @foreach ($tagJenisPortfolio as $tj)
                                     <option value="{{ $tj->id }}">{{$tj->jenis}}</option>
@@ -69,7 +75,8 @@
                                     </div>
                                     @endif
                                 </div>
-                                <input type="file" class="form-control mt-3" id="file_input" name="image" value="">
+                                <input type="file" class="form-control @error('image') is-invalid @enderror mt-3"
+                                    id="file_input" name="image" value="">
                                 <small class="text-muted">Please choose an image to upload.</small>
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -83,8 +90,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <input type="text" class="form-control" id="description" name="description"
-                                    value="{{ $portfolio->description }}" required>
+                                <input type="text" class="form-control @error('description') is-invalid @enderror"
+                                    id="description" name="description" value="{{ $portfolio->description }}" required>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -93,7 +105,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black">Url Link (For website design)</label>
-                                <input type="url" class="form-control" id="url" name="url" value="{{$portfolio->url}}">
+                                <input type="url" class="form-control @error('url') is-invalid @enderror" id="url"
+                                    name="url" value="{{$portfolio->url}}">
+                                @error('url')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>

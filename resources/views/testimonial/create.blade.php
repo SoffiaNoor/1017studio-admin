@@ -68,7 +68,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" required>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -106,7 +106,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Description</label>
-                                <textarea type="text" style="height:200px" class="form-control" id="description" name="description"
+                                <textarea type="text" style="height:200px" class="form-control @error('description') is-invalid @enderror" id="description" name="description"
                                     required></textarea>
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">

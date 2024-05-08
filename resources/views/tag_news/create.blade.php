@@ -38,8 +38,13 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label style="color:black">Name</label>
-                                <textarea type="text" style="height:100px" class="form-control" id="name" name="name"
+                                <textarea type="text" style="height:100px" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
                                     required></textarea>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
