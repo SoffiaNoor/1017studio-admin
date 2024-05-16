@@ -179,10 +179,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea rows="10" cols="80"
-                                        class="form-control @error('description') is-invalid @enderror" id="description"
-                                        name="description" placeholder="Here can be your description"
-                                        required>{{$information->description}}</textarea>
+                                    <div id="editor1"></div>
+                                    <textarea class="@error('description') is-invalid @enderror" name="description"
+                                        style="display:none;">{{$information->description}}</textarea>
                                     @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -281,8 +280,7 @@
 @endsection
 @section('jquery')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.tiny.cloud/1/a2m8qq7i48j1gc5izphurmemg39o165ft6pbpiz5a7waq805/tinymce/5/tinymce.min.js"
-    referrerpolicy="origin"></script>
+
 
 <script>
     const fileInput = document.getElementById('file_input');
@@ -337,14 +335,20 @@
         }
     });
 </script>
-
 <script>
-    tinymce.init({
-        selector: 'textarea#description',
-        plugins: 'lists textcolor',
-        toolbar: 'undo redo | bold italic | bullist numlist | forecolor backcolor',
-        height: 300, // You can adjust the height as needed
-        menubar: false // Optionally, you can hide the menubar
-    });
+    @foreach(['description'] as $fieldName)
+        ClassicEditor
+            .create(document.querySelector('#editor{{$loop->iteration}}'))
+            .then(editor => {
+                editor.setData(`{!! $information[$fieldName] !!}`);
+                editor.model.document.on('change:data', () => {
+                    const data = editor.getData();
+                    document.querySelector(`textarea[name="{{$fieldName}}"]`).value = data;
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    @endforeach
 </script>
 @endsection

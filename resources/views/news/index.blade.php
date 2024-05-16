@@ -65,6 +65,13 @@
                                         </span>
                                     </div>
                                 </td>
+                                <td class="text-default text-xs font-weight-bolder">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ms-3 text-xs">
+                                            {!! substr($p->description,0,30)!!}
+                                        </span>
+                                    </div>
+                                </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         @if($p->photo)

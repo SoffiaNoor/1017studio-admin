@@ -11,12 +11,6 @@
                         </h3>
                         <hr class="ms-3 mt-0" style="background-color:#1c1c1c;height:10px;border-radius:40px;width:50%">
                     </div>
-                    <div class="col-sm-6"> <a class="btn btn-warning text-white" href="{{route('contact.create')}}"
-                            style="float:right;background: linear-gradient(45deg, #525151, #1c1c1c)">
-                            <span>Tambah Data</span>
-                            <i class="fa fa-plus ms-2"></i>
-                        </a>
-                    </div>
                 </div>
                 @if (count($contact) > 0)
                 <div class="table-responsive">

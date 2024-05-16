@@ -85,8 +85,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label style="color:black">Description</label>
-                                <input type="text" class="form-control" id="description" name="description" required>
+                                <label>Description</label>
+                                <div id="editor1"></div>
+                                <textarea class="@error('description') is-invalid @enderror" name="description"
+                                    style="display:none;"></textarea>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -127,5 +134,21 @@
             reader.readAsDataURL(fileInput.files[0]);
         }
     });
+</script>
+
+<script>
+    @foreach(['description'] as $fieldName)
+        ClassicEditor
+            .create(document.querySelector('#editor{{$loop->iteration}}'))
+            .then(editor => {
+                editor.model.document.on('change:data', () => {
+                    const data = editor.getData();
+                    document.querySelector(`textarea[name="{{$fieldName}}"]`).value = data;
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    @endforeach
 </script>
 @endsection
