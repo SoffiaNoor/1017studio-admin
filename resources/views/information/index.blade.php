@@ -72,7 +72,8 @@
                                     <div class="p-3 shadow-lg text-center"
                                         style="background-color: #535353;border-radius:20px">
                                         <img id="image_display" class="object-contain items-center"
-                                            style="width:10rem;height:10rem;object-fit:cover" src="{{asset($information->logo_header)}}">
+                                            style="width:10rem;height:10rem;object-fit:cover"
+                                            src="{{asset($information->logo_header)}}">
                                     </div>
                                     @else
                                     <img id="image_display" class="object-contain items-center"
@@ -90,7 +91,8 @@
                                     <div class="p-3 shadow-lg text-center"
                                         style="background-color: #ffffff;border-radius:20px">
                                         <img id="image_display2" class="object-contain items-center"
-                                            style="width:10rem;height:10rem;" src="{{asset($information->logo_favicon)}}">
+                                            style="width:10rem;height:10rem;"
+                                            src="{{asset($information->logo_favicon)}}">
                                     </div>
                                     @else
                                     <img id="image_display" class="object-contain items-center"
@@ -108,7 +110,8 @@
                                     <div class="p-3 shadow-lg text-center"
                                         style="background-color: #ffffff;border-radius:20px">
                                         <img id="image_display3" class="object-contain items-center"
-                                            style="width:10rem;height:10rem;" src="{{asset($information->logo_company)}}">
+                                            style="width:10rem;height:10rem;"
+                                            src="{{asset($information->logo_company)}}">
                                     </div>
                                     @else
                                     <img id="image_display3" class="object-contain items-center"
@@ -163,6 +166,14 @@
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Address</label>
                                 <input class="form-control" type="text" value="{{$information->address}}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Location</label>
+                                <div class="grid grid-cols-6">
+                                    {!! $information->google_map !!}
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-12">
